@@ -1,0 +1,33 @@
+﻿<div class="el-my-home">
+	<!-- canvas由于延迟了渲染因此要提前设置高度撑起 -->
+    <div class="canvasct" style="height:{{canvas_height}}px;background:#fafafa">
+        <canvas class='canvas'></canvas>
+    </div>
+    <div class="footer">
+        <div class="foot-img" x-model='img_code'>
+            <div class="imgct-left">
+              <img src="/plugin_set/public/img/mongguo.jpg">
+            </div>
+            <div class="imgct-right">
+              <img src="/plugin_set/public/img/mongguo.jpg" alt="">
+              <!-- <img src="/plugin_set/public/img/alipay.png"> -->
+            </div>
+        </div>
+        <div class="link-href">
+            <div class="link-item" x-repeat='link_href' x-class="{'border-none':'$index===0'}" x-route="{{route}}" active="active">{{content}}</div>
+        </div>
+        <p>{{from}}</p>
+        <!-- <p>{{link_us}}</p>
+        <p>{{cooperate}}</p> -->
+        <div class="footerContent">
+          <div class="content" style="display: flex;align-items: center;justify-content:center">
+            <img src="/plugin_set/public/img/beian.png">
+          </div>
+            <div class="content">备案号</div>
+            <div class="content savaNum">蜀ICP备19013005号</div>
+            <a class="link" href="http://www.miit.gov.cn">工信部链接</a>
+            <a class="link" href="http://www.miit.gov.cn/n1278117/n1287041/n4312488/c4312509/content.html">备案查询</a>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

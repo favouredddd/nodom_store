@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+	<title></title>
+  <script src="/plugin_set/public/js/nodom-full-test.js"></script>
+  <link rel="stylesheet" href="/plugin_set/public/css/dir.css" media="screen and (max-width:800px)">
+	<style>
+    @media screen and (min-width: 800px){
+      .list{
+        margin-right:20px;
+      }
+    }
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.wrap {
+			width: 800px;
+			margin: 20px auto;
+		}
+
+		.audio {
+
+			float: left;
+			width: 300px;
+		}
+
+		audio {
+			display: block;
+		}
+
+		.list {
+			border-radius: 10px;
+			border: 1px solid #9e9e9e24;
+			width: calc(200px - 2px);
+			float: left;
+			padding: 20px 40px;
+			background-color: rgba(224, 224, 224, .1);
+			box-shadow: 1px 1px 10px 0px rgba(25, 25, 25, .18);
+		}
+
+		.list .header {
+			color: #21f3d2;
+			font-weight: bold;
+      text-align: center;
+      height: 30px;
+     line-height: 30px;
+		}
+
+		.list .ul {
+      height: 400px;
+			overflow-y: auto;
+			padding: 0 20px;
+			color: #27c321;
+			list-style: none;
+		}
+
+		.list .ul>li {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			cursor: pointer;
+			font-size: 12px;
+			height: 25px;
+			line-height: 20px;
+		}
+    .list .ul div{
+      padding-top: 5px;
+    }
+    .list .ul::-webkit-scrollbar {
+			width: 0px;
+			display: none;
+		}
+
+		.clear {
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+	
+		<div class="list">
+      	<p class="header">目录数据</p>
+			<ul class="ul">
+				<li x-repeat="list" >
+					<div >
+							<span href="{{src}}"  e-click="change">{{name}}</span>
+					</div>
+					
+				</li>
+			</ul>
+		</div>
+		<div class="audio">
+				<audio src="{{src}}" controls="controls" e-ended="startNext" autoplay="autoplay"></audio>
+			</div>
+		<div class="clear"></div>
+	</div>
+</body>
+<script>
+	if ('http:' == document.location.protocol) {
+		protocol = 'http://nodom.store'
+	} else {
+		protocol = 'https://nodom.store'
+	}
+	DD.createModule({
+		el: ".wrap",
+		data: {
+			list: [{
+				src: "",
+				name:""
+			}],
+      src: "/plugin_set/public/upload/双笙 - 天命风流.mp3",
+      index:0,
+		},
+		onBeforeFirstRender() {
+			let me = this;
+			DD.request({
+				url: protocol + '/api/getfiles',
+				params: {},
+				successFunc: function (r) {
+					me.data.list = [];
+					JSON.parse(r).forEach(i => {
+						if (/.(mp3|flac)$/ig.test(i)) {
+							me.data.list.push({
+								src: i,
+								name: i.split('/')[4]
+							})
+						}
+					});
+					me.data.$set('list', me.data.list)
+				}
+			})
+		},
+		methods: {
+			change(e, d, v) {
+				this.data.src = d.src;
+				this.data.index=d.$index;
+      },
+      startNext(){
+        this.data.index=(this.data.index+this.data.list.length)%this.data.list.length;
+        this.data.src=this.data.list[this.data.index].src;
+      }
+		}
+	})
+</script>
+
+</html>

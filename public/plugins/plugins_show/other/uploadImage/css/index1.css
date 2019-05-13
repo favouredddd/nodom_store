@@ -1,0 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapanimation {
+	overflow: hidden;
+	background-color: #2b3a42;
+	width: 80%;
+	height: 250px;
+	margin: 0 auto;
+}
+
+.wrapanimation .small {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.wrapanimation .animation {
+	display: inline-block;
+	transform-style: preserve-3d;
+	transition: transform 1000ms;
+}
+
+.wrapanimation .animation .select {
+	display: block;
+	background: rgba(141, 214, 249, 0.5);
+	transition-delay: 0.2s;
+	transition: border-width .2s;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #fff;
+}
+@media screen and (max-width: 800px) {
+	.wrapanimation .pluginWrap {
+		top: 2rem;
+	}
+}
+.wrapanimation .pluginWrap {
+	position: relative;
+	transform: rotateX(-33.5deg) rotateY(45deg);
+	transform-style: preserve-3d;
+	left: 3.5rem;
+}

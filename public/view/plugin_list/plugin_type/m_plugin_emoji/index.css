@@ -1,0 +1,29 @@
+.el-plugin-21001 .list {
+}
+.el-plugin-21001 .list:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.el-plugin-21001 .list .imgs {
+	float: left;
+	width: 100px;
+	height: 100px;
+	position: relative;
+}
+
+.el-plugin-21001 .list .imgs .cancle {
+	z-index: 999;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 0px;
+	right: 0px;
+	background: url("http://nodom.store/plugin_set/public/plugins/plugins_show/other/uploadImage/imgs/cancel.png")
+		center center no-repeat;
+	background-size: cover;
+}
+.el-plugin-21001 .list .imgs > img {
+	width: 100px !important;
+	height: 100px !important;
+}

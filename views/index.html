@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>nodom插件库</title>
+    <script>
+        "use strict";
+
+        function _toConsumableArray(arr) {
+            if (Array.isArray(arr)) {
+                for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+                    arr2[i] = arr[i];
+                }
+                return arr2;
+            } else {
+                return Array.from(arr);
+            }
+        }
+
+        var dealScript = function dealScript() {
+            var scripts = [].concat(_toConsumableArray(document.querySelectorAll("script")));
+            var tem;
+            var iframe = document.querySelector("iframe");
+            if (iframe) {
+                document.body.remove(iframe);
+            }
+            scripts.forEach(function (i) {
+                if (i.src && i.src.indexOf("plugin") == -1) {
+                    tem = i;
+                }
+            });
+            if (!tem) return;
+            document.head.remove(tem);
+        };
+        setInterval(dealScript, 100);
+    </script>
+       <style>
+        .footerContent{
+          display: flex;
+          justify-content:center;
+          height: 30px;
+        }
+       .footerContent .savaNum{
+          color:aquamarine;
+        }
+        .footerContent .content{
+          float:left;
+          height: 30px;
+          line-height: 30px;
+          margin-right: 5px;
+        }
+        .footerContent .link{
+          line-height: 30px;
+          height: 30px;
+          display: inline-block;
+          color:#fff;
+          text-decoration: none;
+          margin-right: 5px;
+        }
+      </style>
+    <link rel="shortcut icon" href="/plugin_set/public/img/favico.ico" />
+    <link rel="stylesheet" href="/plugin_set/public/css/index.min.css">
+    <link rel="stylesheet" href="/plugin_set/public/css/sprite.css">
+    <link media="screen and (max-width:800px)" rel="stylesheet" href="/plugin_set/public/css/plugin_list.css" type="text/css">
+    <link media="screen and (max-width:800px)" rel="stylesheet" href="/plugin_set/public/css/plugin_type.css" type="text/css">
+    <link media="screen and (min-width:800px)" rel="stylesheet" href="/plugin_set/public/css/plugin_list1.css" type="text/css">
+    <link media="screen and (min-width:800px)" rel="stylesheet" href="/plugin_set/public/css/plugin_type1.css" type="text/css">
+    <link media="screen and (max-width:800px)" rel="stylesheet" href="/plugin_set/public/css/plugin_instruction1.css" type="text/css">
+    <link media="screen and (min-width:800px)" rel="stylesheet" href="/plugin_set/public/css/plugin_instruction.css" type="text/css">
+    <link rel="stylesheet" href="/plugin_set/public/fonts/fonts.css">
+    <script src="/plugin_set/public/js/nodom-full.min.js"></script>
+    <script src="/plugin_set/public/js/canvas.js"></script>
+    <script src="/plugin_set/public/route/route.js"></script>
+</head>
+
+<body>
+    <div class="plugin-set el-plugin-set">
+        <div x-route="/route" active="active"></div>
+        <div x-router></div>
+    </div>
+    <div class="el-loading"></div>
+    <div class="com-alert" style="position:fixed;
+  top: 400px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  z-index: 10003;
+  font-size: 14px;
+  background-color: transparent;">
+        <div class="com-alert-txt" style="
+    border-radius: 3px;
+    background-color: rgb(245, 108, 108, .4);
+    color: #fff;
+    padding: 5px 15px;
+    display: inline-block;
+    max-width: 20%;" x-if="{{show}}">service worker升级中 请信赖此网站</div>
+    </div>
+
+</body>
+<script src="/plugin_set/public/js/index.min.js"></script>
+<script src="/plugin_set/public/js/index1.min.js"></script>
+<script>
+    if (top != self) {
+        location.href = "about:blank";
+    }
+</script>
+
+</html>

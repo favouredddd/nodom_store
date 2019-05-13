@@ -1,0 +1,24 @@
+<div class="plugin-type el-plugin-type">
+  <div class="plugin-name">{{name}}插件</div>
+  <div class='plugin-item el-plugin-21001'>
+      <div class="plugin-content ">
+        <div class="content">
+          <div x-plugin="uploadImages" class="plugin" dataName="upload" x-model="upload">
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div x-repeat="imgs" class="imgs">
+          <img class="bg-{{src}}" src="{{src}}">
+          <div class="cancle" e-click="delete">
+
+          </div>
+        </div>
+        <!-- <div class="clear"></div> -->
+      </div>
+      <div class='plugin-explain'>
+        <p>插件说明:</p>
+        <p class='explain'>这是一款上传图片的插件。</p>
+      </div>
+  </div>
+</div>
